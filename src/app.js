@@ -1,5 +1,5 @@
 function main() {
-    let person = {
+    var person = {
         name: 'Ivan',
         age: 34
     };
@@ -7,4 +7,5 @@ function main() {
         name: 'Alex',
         age: 24
     };
-};
+}
+;

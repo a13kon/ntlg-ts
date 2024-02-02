@@ -11,6 +11,8 @@ console.log(User.generatePassword());
 
 
 abstract class Figure {
+    static STATIC_ABSTRACT = true;
+
     getArea(): number {
         console.log('Not Implemented');
         return 0;
@@ -54,3 +56,4 @@ class Circle implements FigureInterface {
 
 const circle = new Circle;
 console.log(circle.getArea());
+console.log(Figure.STATIC_ABSTRACT);

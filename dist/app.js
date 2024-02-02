@@ -33,6 +33,7 @@ var Figure = /** @class */ (function () {
         console.log('Not Implemented');
         return 0;
     };
+    Figure.STATIC_ABSTRACT = true;
     return Figure;
 }());
 var Rectangle = /** @class */ (function (_super) {
@@ -64,3 +65,4 @@ var Circle = /** @class */ (function () {
 }());
 var circle = new Circle;
 console.log(circle.getArea());
+console.log(Figure.STATIC_ABSTRACT);

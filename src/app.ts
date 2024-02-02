@@ -34,3 +34,17 @@ class Rectangle extends Figure {
 }
 const figure = new Rectangle(20, 80);
 console.log(figure.getArea());
+
+//разница между интерфейсом 
+interface FigureInterface {
+    getArea(): number;
+}
+
+class Circle implements FigureInterface {
+    getArea() {
+        return 0;
+    }
+}
+
+const circle = new Circle;
+console.log(circle.getArea());

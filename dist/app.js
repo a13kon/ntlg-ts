@@ -51,3 +51,13 @@ var Rectangle = /** @class */ (function (_super) {
 }(Figure));
 var figure = new Rectangle(20, 80);
 console.log(figure.getArea());
+var Circle = /** @class */ (function () {
+    function Circle() {
+    }
+    Circle.prototype.getArea = function () {
+        return 0;
+    };
+    return Circle;
+}());
+var circle = new Circle;
+console.log(circle.getArea());

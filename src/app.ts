@@ -15,6 +15,8 @@ abstract class Figure {
         console.log('Not Implemented');
         return 0;
     }
+
+    abstract getPI(): number;
 }
 
 
@@ -31,9 +33,13 @@ class Rectangle extends Figure {
         console.log('Not Implemented');
         return this.width * this.height;
     }
+
+    getPI(): number {
+        return 3.14;
+    }
 }
 const figure = new Rectangle(20, 80);
-console.log(figure.getArea());
+console.log(figure.getArea(), figure.getPI());
 
 //разница между интерфейсом 
 interface FigureInterface {

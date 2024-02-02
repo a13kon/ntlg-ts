@@ -47,10 +47,13 @@ var Rectangle = /** @class */ (function (_super) {
         console.log('Not Implemented');
         return this.width * this.height;
     };
+    Rectangle.prototype.getPI = function () {
+        return 3.14;
+    };
     return Rectangle;
 }(Figure));
 var figure = new Rectangle(20, 80);
-console.log(figure.getArea());
+console.log(figure.getArea(), figure.getPI());
 var Circle = /** @class */ (function () {
     function Circle() {
     }

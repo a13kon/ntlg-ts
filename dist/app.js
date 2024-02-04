@@ -15,54 +15,32 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 var User = /** @class */ (function () {
-    function User() {
+    function User(name) {
+        this.name = name;
     }
-    User.generatePassword = function () {
-        return Math.random().toString(36).substring(2);
-    };
-    User.MAX_LEVEL = 80;
     return User;
 }());
-var user = new User;
-console.log(User.MAX_LEVEL);
-console.log(User.generatePassword());
-var Figure = /** @class */ (function () {
-    function Figure() {
-    }
-    Figure.prototype.getArea = function () {
-        console.log('Not Implemented');
-        return 0;
-    };
-    Figure.STATIC_ABSTRACT = true;
-    return Figure;
-}());
-var Rectangle = /** @class */ (function (_super) {
-    __extends(Rectangle, _super);
-    function Rectangle(width, height) {
-        var _this = _super.call(this) || this;
-        _this.width = width;
-        _this.height = height;
+var Student = /** @class */ (function (_super) {
+    __extends(Student, _super);
+    function Student(name, cource) {
+        var _this = _super.call(this, name) || this;
+        _this.cource = cource;
         return _this;
     }
-    Rectangle.prototype.getArea = function () {
-        console.log('Not Implemented');
-        return this.width * this.height;
-    };
-    Rectangle.prototype.getPI = function () {
-        return 3.14;
-    };
-    return Rectangle;
-}(Figure));
-var figure = new Rectangle(20, 80);
-console.log(figure.getArea(), figure.getPI());
-var Circle = /** @class */ (function () {
-    function Circle() {
+    return Student;
+}(User));
+var Asp = /** @class */ (function (_super) {
+    __extends(Asp, _super);
+    function Asp(name, cource, salary) {
+        var _this = _super.call(this, name, cource) || this;
+        _this.salary = salary;
+        return _this;
     }
-    Circle.prototype.getArea = function () {
-        return 0;
-    };
-    return Circle;
-}());
-var circle = new Circle;
-console.log(circle.getArea());
-console.log(Figure.STATIC_ABSTRACT);
+    return Asp;
+}(Student));
+var user = new User('userName');
+var student = new Student('studentName', 'math');
+var asp = new Asp('aspName', 'cource', 200);
+console.log(user);
+console.log(student);
+console.log(asp);

@@ -14,33 +14,55 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var User = /** @class */ (function () {
-    function User(name) {
-        this.name = name;
+var BooksRepository = /** @class */ (function () {
+    function BooksRepository() {
     }
-    return User;
+    BooksRepository.prototype.createBook = function (book) {
+        //create book
+        console.log(book);
+    };
+    BooksRepository.prototype.getBook = function (id) {
+        //get book by id
+    };
+    BooksRepository.prototype.getBooks = function () {
+        //get all books
+    };
+    BooksRepository.prototype.updateBooks = function (id) {
+        //update book
+    };
+    BooksRepository.prototype.deleteBook = function (id) {
+        //delete book
+    };
+    return BooksRepository;
 }());
-var Student = /** @class */ (function (_super) {
-    __extends(Student, _super);
-    function Student(name, cource) {
-        var _this = _super.call(this, name) || this;
-        _this.cource = cource;
-        return _this;
+var MainStorage = /** @class */ (function (_super) {
+    __extends(MainStorage, _super);
+    function MainStorage() {
+        return _super !== null && _super.apply(this, arguments) || this;
     }
-    return Student;
-}(User));
-var Asp = /** @class */ (function (_super) {
-    __extends(Asp, _super);
-    function Asp(name, cource, salary) {
-        var _this = _super.call(this, name, cource) || this;
-        _this.salary = salary;
-        return _this;
-    }
-    return Asp;
-}(Student));
-var user = new User('userName');
-var student = new Student('studentName', 'math');
-var asp = new Asp('aspName', 'cource', 200);
-console.log(user);
-console.log(student);
-console.log(asp);
+    return MainStorage;
+}(BooksRepository));
+// class Magazines implements Book {
+//     title: string;
+//     description: string;
+//     authors: string;
+//     favorite: boolean;
+//     fileCover: string;
+//     fileName: string;
+//     constructor(title: string, 
+//                 description: string, 
+//                 authors: string, 
+//                 favorite: boolean,
+//                 fileCover: string,
+//                 fileName: string) {
+//                     this.title = title;
+//                     this.description = description;
+//                     this.authors = authors;
+//                     this.favorite = favorite;
+//                     this.fileCover = fileCover;
+//                     this.fileName = fileName;
+//                 }
+// }
+// const storage = new MainStorage();
+// const magazine = new Magazines('title', 'desc', 'authors', true, 'corev', 'name');
+// storage.createBook(magazine);

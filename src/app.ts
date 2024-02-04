@@ -1,30 +1,66 @@
-class User {
-    name: string;
-    constructor(name: string) {
-        this.name = name;
+interface Book {
+
+    title: string;
+    description: string;
+    authors: string;
+    favorite: boolean;
+    fileCover: string;
+    fileName: string;
+}
+
+abstract class BooksRepository {
+
+    createBook(book: Book) {
+        //create book
+        console.log(book);
+    }
+
+    getBook(id: number) {
+        //get book by id
+    }
+
+    getBooks(){
+        //get all books
+    }
+
+    updateBooks(id: number) {
+        //update book
+    }
+
+    deleteBook(id: number) {
+        //delete book
     }
 }
 
-class Student extends User {
-    cource: string;
-    constructor(name: string, cource: string) {
-        super(name);
-        this.cource = cource;
-    }
+class MainStorage extends BooksRepository {
+    
 }
 
-class Asp extends Student {
-    salary: number;
-    constructor(name: string, cource: string, salary: number) {
-        super(name, cource);
-        this.salary = salary;
-    }
-}
+// class Magazines implements Book {
 
-const user = new User('userName');
-const student = new Student('studentName', 'math');
-const asp = new Asp('aspName', 'cource', 200);
+//     title: string;
+//     description: string;
+//     authors: string;
+//     favorite: boolean;
+//     fileCover: string;
+//     fileName: string;
 
-console.log(user);
-console.log(student);
-console.log(asp);
+//     constructor(title: string, 
+//                 description: string, 
+//                 authors: string, 
+//                 favorite: boolean,
+//                 fileCover: string,
+//                 fileName: string) {
+
+//                     this.title = title;
+//                     this.description = description;
+//                     this.authors = authors;
+//                     this.favorite = favorite;
+//                     this.fileCover = fileCover;
+//                     this.fileName = fileName;
+//                 }
+// }
+
+// const storage = new MainStorage();
+// const magazine = new Magazines('title', 'desc', 'authors', true, 'corev', 'name');
+// storage.createBook(magazine);

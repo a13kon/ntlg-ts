@@ -1,14 +1,23 @@
-class UserRepository {
-    findAll() {
-        // ...
-        console.log('all users')
+class UserRepository implements IUserRepository {
+    findAll(): Promise<User[]> {
+        return new Promise<User[]>((resolve: any) => {
+            resolve([new User]);
+        });
     }
 }
 
-class UserService {
-    repository: UserRepository;
-    constructor() {
-        this.repository = new UserRepository();
+class User {
+
+}
+
+interface IUserRepository {
+    findAll(): Promise<User[]>
+}
+
+export class UserService {
+    repository: IUserRepository;
+    constructor(repository: IUserRepository) {
+        this.repository = repository;
     }
 
     getAllUsers() {
@@ -16,5 +25,5 @@ class UserService {
     }
 }
 
-const userServ = new UserService();
-userServ.getAllUsers();
+const rep = new UserRepository();
+const cl = new UserService(rep);

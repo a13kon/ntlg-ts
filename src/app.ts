@@ -1,7 +1,7 @@
 class UserRepository implements IUserRepository {
     findAll(): Promise<User[]> {
-        return new Promise<User[]>((resolve: any) => {
-            resolve([new User]);
+        return new Promise<User[]>(resolve => {
+            resolve([new User()]);
         });
     }
 }
@@ -14,7 +14,7 @@ interface IUserRepository {
     findAll(): Promise<User[]>
 }
 
-export class UserService {
+class UserService {
     repository: IUserRepository;
     constructor(repository: IUserRepository) {
         this.repository = repository;
@@ -26,4 +26,9 @@ export class UserService {
 }
 
 const rep = new UserRepository();
-const cl = new UserService(rep);
+const user = new UserService(rep);
+console.log(user.getAllUsers())
+
+user.getAllUsers().then((res) => {
+    console.log(res);
+});

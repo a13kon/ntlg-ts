@@ -1,31 +1,22 @@
 "use strict";
-var UserRepository = /** @class */ (function () {
-    function UserRepository() {
+var Box = /** @class */ (function () {
+    function Box() {
+        this.container = [];
     }
-    UserRepository.prototype.findAll = function () {
-        return new Promise(function (resolve) {
-            resolve([new User()]);
-        });
+    Box.prototype.add = function (value) {
+        this.container.push(value);
     };
-    return UserRepository;
-}());
-var User = /** @class */ (function () {
-    function User() {
-    }
-    return User;
-}());
-var UserService = /** @class */ (function () {
-    function UserService(repository) {
-        this.repository = repository;
-    }
-    UserService.prototype.getAllUsers = function () {
-        return this.repository.findAll();
+    Box.prototype.pop = function () {
+        return this.container.pop();
     };
-    return UserService;
+    Box.prototype.count = function () {
+        return this.container.length;
+    };
+    return Box;
 }());
-var rep = new UserRepository();
-var user = new UserService(rep);
-console.log(user.getAllUsers());
-user.getAllUsers().then(function (res) {
-    console.log(res);
-});
+var strBox = new Box();
+strBox.add('hello');
+var numBox = new Box();
+numBox.add(1);
+console.log(strBox.pop());
+console.log(numBox.pop());

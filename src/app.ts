@@ -1,34 +1,27 @@
-class UserRepository implements IUserRepository {
-    findAll(): Promise<User[]> {
-        return new Promise<User[]>(resolve => {
-            resolve([new User()]);
-        });
+class Box<T> {
+    container: T[];
+    constructor() {
+        this.container = [];
+    }
+
+    add(value: T) {
+        this.container.push(value)
+    }
+
+    pop(): T {
+        return this.container.pop();
+    }
+
+    count(): number {
+        return this.container.length;
     }
 }
 
-class User {
+const strBox = new Box<string>();
+strBox.add('hello');
 
-}
+const numBox = new Box<number>();
+numBox.add(1);
 
-interface IUserRepository {
-    findAll(): Promise<User[]>
-}
-
-class UserService {
-    repository: IUserRepository;
-    constructor(repository: IUserRepository) {
-        this.repository = repository;
-    }
-
-    getAllUsers() {
-        return this.repository.findAll();
-    }
-}
-
-const rep = new UserRepository();
-const user = new UserService(rep);
-console.log(user.getAllUsers())
-
-user.getAllUsers().then((res) => {
-    console.log(res);
-});
+console.log(strBox.pop());
+console.log(numBox.pop());

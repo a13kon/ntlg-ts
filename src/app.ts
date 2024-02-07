@@ -1,27 +1,28 @@
-class Box<T> {
-    container: T[];
-    constructor() {
-        this.container = [];
-    }
+import 'reflect-metadata'
 
-    add(value: T) {
-        this.container.push(value)
-    }
+console.clear();
 
-    pop(): T {
-        return this.container.pop();
-    }
+function readTypes () {
+    const decorator: MethodDecorator = (target, propertyKey, description) => {
+        const args = Reflect.getMetadata('design:paramtypes', target, propertyKey)
+            .map((c: any) => c.name);
+        const ret = Reflect.getMetadata('design:returntype', target, propertyKey);
 
-    count(): number {
-        return this.container.length;
-    }
+        console.log(`Arguments type: ${args.join(', ')}.`); // Arguments type: Number, String, Foo.
+        console.log(`Return type:    ${ret.name}.`) // Return type:    Boolean.
+    };
+    return decorator;
 }
 
-const strBox = new Box<string>();
-strBox.add('hello');
+class Foo {
 
-const numBox = new Box<number>();
-numBox.add(1);
+}
 
-console.log(strBox.pop());
-console.log(numBox.pop());
+class Bar {
+
+    @readTypes()
+    fn (a: number, b: string, c: Foo): boolean {
+        return true
+    }
+
+}

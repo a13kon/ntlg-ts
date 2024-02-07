@@ -1,22 +1,52 @@
-"use strict";
-var Box = /** @class */ (function () {
-    function Box() {
-        this.container = [];
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+System.register("app", ["reflect-metadata"], function (exports_1, context_1) {
+    "use strict";
+    var Foo, Bar;
+    var __moduleName = context_1 && context_1.id;
+    function readTypes() {
+        var decorator = function (target, propertyKey, description) {
+            var args = Reflect.getMetadata('design:paramtypes', target, propertyKey)
+                .map(function (c) { return c.name; });
+            var ret = Reflect.getMetadata('design:returntype', target, propertyKey);
+            console.log("Arguments type: ".concat(args.join(', '), ".")); // Arguments type: Number, String, Foo.
+            console.log("Return type:    ".concat(ret.name, ".")); // Return type:    Boolean.
+        };
+        return decorator;
     }
-    Box.prototype.add = function (value) {
-        this.container.push(value);
+    return {
+        setters: [
+            function (_1) {
+            }
+        ],
+        execute: function () {
+            console.clear();
+            Foo = /** @class */ (function () {
+                function Foo() {
+                }
+                return Foo;
+            }());
+            Bar = /** @class */ (function () {
+                function Bar() {
+                }
+                Bar.prototype.fn = function (a, b, c) {
+                    return true;
+                };
+                __decorate([
+                    readTypes(),
+                    __metadata("design:type", Function),
+                    __metadata("design:paramtypes", [Number, String, Foo]),
+                    __metadata("design:returntype", Boolean)
+                ], Bar.prototype, "fn", null);
+                return Bar;
+            }());
+        }
     };
-    Box.prototype.pop = function () {
-        return this.container.pop();
-    };
-    Box.prototype.count = function () {
-        return this.container.length;
-    };
-    return Box;
-}());
-var strBox = new Box();
-strBox.add('hello');
-var numBox = new Box();
-numBox.add(1);
-console.log(strBox.pop());
-console.log(numBox.pop());
+});
